@@ -5,6 +5,7 @@ public class Student {
     String prenume;
     String nume;
     String formatieDeStudiu;
+    static boolean headerPrinted = false;
 
     public Student(int numarMatricol, String prenume, String nome, String formatieDeStudiu) {
         this.numarMatricol = numarMatricol;
@@ -31,7 +32,12 @@ public class Student {
 
     @Override
     public String toString() {
-        String s = "%13d %10s %10s %s ";
-        return String.format(s, numarMatricol, prenume, nume, formatieDeStudiu);
+        String s = String.format("%13d %10s %10s %s ", numarMatricol, prenume, nume, formatieDeStudiu);
+        String header = "";
+        if(!headerPrinted){
+            header = String.format("%10s %10s %10s %10s%n", "numarMatricol", "Nume", "Prenume", "formatieDeStudiu");
+            headerPrinted = true;
+        }
+        return header + s;
     }
 }
