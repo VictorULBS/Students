@@ -30,9 +30,7 @@ public class Application {
 
     public static void writeStudents(ArrayList<Student> students, String fileName) throws IOException {
 
-        Path path = Paths.get("students_out.txt");
-        String text = "test text";
-        //Files.write(path, text.getBytes());
+        Path path = Paths.get(fileName);
         students.forEach(student -> {
             String new_text = student.toString();
             try {
@@ -135,6 +133,23 @@ public class Application {
 
         studentHashMap.forEach( (numarMatricol, student) -> {System.out.println(studentHashMap.get(numarMatricol).toString());});
         //
+
+        ArrayList<StudentBursier> bursieri = new ArrayList<>();
+        bursieri.add( new StudentBursier(new Student(1025,"Andrei","Popa","ISM141/2"), 8.70, 725.50));
+        bursieri.add( new StudentBursier(new Student(1024,"Ioan","Mihalcea","ISM141/1"), 9.80, 801.10));
+        bursieri.add( new StudentBursier(new Student(1026,"Anamaria","Prodan","TI131/1"), 8.90, 745.50));
+        bursieri.add( new StudentBursier(new Student(1029,"Bianca","Popescu","TI131/1,"), 9.10, 780.80));
+
+        Path path = Paths.get("bursieri_out.txt");
+        bursieri.forEach(student -> {
+            String new_text = student.toString();
+            try{
+                Files.write(path, new_text.getBytes());
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        });
     }
 }
 

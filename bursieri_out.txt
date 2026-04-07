@@ -1,0 +1,1 @@
+StudentBursier{cuantumBursa=780.8, numarMatricol=1029, prenume='Bianca', nume='Popescu', formatieDeStudiu='TI131/1,', nota=9.1}
