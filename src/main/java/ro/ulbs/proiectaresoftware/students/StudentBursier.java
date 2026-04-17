@@ -11,6 +11,10 @@ public class StudentBursier extends Student{
         this.cuantumBursa = cuantumBursa;
     }
 
+    public double getCuantumBursa(){
+        return cuantumBursa;
+    }
+
     @Override
     public String toString() {
         return "StudentBursier{" +
@@ -20,7 +24,7 @@ public class StudentBursier extends Student{
                 ", nume='" + nume + '\'' +
                 ", formatieDeStudiu='" + formatieDeStudiu + '\'' +
                 ", nota=" + nota +
-                '}';
+                "}\n";
     }
 
     @Override

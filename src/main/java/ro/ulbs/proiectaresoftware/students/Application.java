@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 
@@ -144,7 +145,7 @@ public class Application {
         bursieri.forEach(student -> {
             String new_text = student.toString();
             try{
-                Files.write(path, new_text.getBytes());
+                Files.write(path, new_text.getBytes(), StandardOpenOption.APPEND);
             }
             catch(IOException e){
                 e.printStackTrace();
