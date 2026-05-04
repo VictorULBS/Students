@@ -91,24 +91,7 @@ public class Application {
         ));
     }
 
-    public static void main(String[] args) {
-
-        Student s1 = new Student(112, "Ioan", "Popa", "TI21/1");
-        Student s2 = new Student(112, "Maria", "Oprea", "TI21/1");
-        Student s3 = new Student(120, "Alis", "Popa", "TI21/2");
-        Student s4 = new Student(122, "Mihai", "Vecerdea", "TI22/1");
-        Student s5 = new Student(122, "Eugen", "Uritescu", "TI22/2");
-
-        //STUDENT LIST
-        List<Student> studentList = new ArrayList<>();
-        studentList.add(s1);
-        studentList.add(s2);
-        studentList.add(s3);
-        studentList.add(s4);
-        studentList.add(s5);
-        studentList.forEach(student -> student.setNota(0d));
-        //studentList.forEach(student -> System.out.println(student.toString()));
-
+    public static void exercitiuHashMap(){
         ArrayList<Student> listFromFile = exercitiuCitireFisier();
         HashMap<Integer, Student> studentHashMap = new HashMap<>();
         for(Student s : listFromFile){
@@ -118,12 +101,12 @@ public class Application {
         try{
             Path path = Paths.get("note_anon.txt");
             Files.lines(path).forEach( line -> {
-               String[] tokens = line.split(",");
-               String token0 = tokens[0];
-               String token1 = tokens[1];
-               Integer numarMatricol = Integer.parseInt(token0);
-               Double nota = Double.parseDouble(token1);
-               studentHashMap.get(numarMatricol).setNota(nota);
+                String[] tokens = line.split(",");
+                String token0 = tokens[0];
+                String token1 = tokens[1];
+                Integer numarMatricol = Integer.parseInt(token0);
+                Double nota = Double.parseDouble(token1);
+                studentHashMap.get(numarMatricol).setNota(nota);
             });
 
 
@@ -133,8 +116,9 @@ public class Application {
         }
 
         studentHashMap.forEach( (numarMatricol, student) -> {System.out.println(studentHashMap.get(numarMatricol).toString());});
-        //
+    }
 
+    public static void exercitiuBursieri(){
         ArrayList<StudentBursier> bursieri = new ArrayList<>();
         bursieri.add( new StudentBursier(new Student(1025,"Andrei","Popa","ISM141/2"), 8.70, 725.50));
         bursieri.add( new StudentBursier(new Student(1024,"Ioan","Mihalcea","ISM141/1"), 9.80, 801.10));
@@ -151,6 +135,47 @@ public class Application {
                 e.printStackTrace();
             }
         });
+    }
+
+    public static void exercitiuImutabilitate(List<Student> totalList){
+        List<Student> list1 = new ArrayList<>();
+        List<Student> list2 = new ArrayList<>();
+        for(int i = 0; i < totalList.size(); i++){
+            Student s;
+            if(i<totalList.size()/2) { s = mutaStudent(totalList.get(i), "TI23/1"); list1.add(s);}
+            else { s = mutaStudent(totalList.get(i), "TI23/2"); list2.add(s);}
+        }
+        list1.forEach(student -> System.out.println(student.toString()));
+        list2.forEach(student -> System.out.println(student.toString()));
+
+    }
+
+    public static Student mutaStudent(Student s, String formatieNoua){
+        return new Student(s.getNumarMatricol(), s.getPrenume(), s.getNume(), formatieNoua);
+    }
+
+
+    public static void main(String[] args) {
+
+        Student s1 = new Student(112, "Ioan", "Popa", "TI21/1");
+        Student s2 = new Student(112, "Maria", "Oprea", "TI21/1");
+        Student s3 = new Student(120, "Alis", "Popa", "TI21/2");
+        Student s4 = new Student(122, "Mihai", "Vecerdea", "TI22/1");
+        Student s5 = new Student(122, "Eugen", "Uritescu", "TI22/2");
+        Student s6 = new Student(122, "Anamaria", "Dragoi", "TI22/1");
+
+        //STUDENT LIST
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(s1);
+        studentList.add(s2);
+        studentList.add(s3);
+        studentList.add(s4);
+        studentList.add(s5);
+        studentList.add(s6);
+        studentList.forEach(student -> student.setNota(0d));
+        //studentList.forEach(student -> System.out.println(student.toString()));
+
+        exercitiuImutabilitate(studentList);
     }
 }
 

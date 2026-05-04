@@ -5,6 +5,7 @@ import java.util.Objects;
 public class StudentBursier extends Student{
 
     double cuantumBursa;
+
     public StudentBursier(Student student, double nota, double cuantumBursa) {
         super(student.getNumarMatricol(), student.getPrenume(), student.getNume(), student.getFormatieDeStudiu());
         this.nota = nota;

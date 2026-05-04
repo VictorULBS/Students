@@ -3,3 +3,7 @@ StudentBursier{cuantumBursa=725.5, numarMatricol=1025, prenume='Andrei', nume='P
 StudentBursier{cuantumBursa=801.1, numarMatricol=1024, prenume='Ioan', nume='Mihalcea', formatieDeStudiu='ISM141/1', nota=9.8}
 StudentBursier{cuantumBursa=745.5, numarMatricol=1026, prenume='Anamaria', nume='Prodan', formatieDeStudiu='TI131/1', nota=8.9}
 StudentBursier{cuantumBursa=780.8, numarMatricol=1029, prenume='Bianca', nume='Popescu', formatieDeStudiu='TI131/1,', nota=9.1}
+StudentBursier{cuantumBursa=725.5, numarMatricol=1025, prenume='Andrei', nume='Popa', formatieDeStudiu='ISM141/2', nota=8.7}
+StudentBursier{cuantumBursa=801.1, numarMatricol=1024, prenume='Ioan', nume='Mihalcea', formatieDeStudiu='ISM141/1', nota=9.8}
+StudentBursier{cuantumBursa=745.5, numarMatricol=1026, prenume='Anamaria', nume='Prodan', formatieDeStudiu='TI131/1', nota=8.9}
+StudentBursier{cuantumBursa=780.8, numarMatricol=1029, prenume='Bianca', nume='Popescu', formatieDeStudiu='TI131/1,', nota=9.1}

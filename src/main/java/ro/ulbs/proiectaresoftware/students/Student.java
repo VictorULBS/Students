@@ -3,10 +3,10 @@ package ro.ulbs.proiectaresoftware.students;
 import java.util.Objects;
 
 public class Student {
-    int numarMatricol;
-    String prenume;
-    String nume;
-    String formatieDeStudiu;
+    final int numarMatricol;
+    final String prenume;
+    final String nume;
+    final String formatieDeStudiu;
     Double nota;
     static boolean headerPrinted = false;
 

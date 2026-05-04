@@ -30,9 +30,14 @@ public class AplicatieCuBursa {
         lst.sort(new Comparator<StudentBursier>() {
             @Override
             public int compare(StudentBursier o1, StudentBursier o2) {
-                return o1.getFormatieDeStudiu().compareTo(o2.getFormatieDeStudiu());
+                return o1.getNume().compareTo(o2.getNume());
             }
         });
+
+        lst.sort(Comparator.comparing(StudentBursier::getFormatieDeStudiu)
+                .thenComparing(StudentBursier::getNume)
+
+        );
         // Comparati formatia de studiu, apoi numele, apoi prenumele, apoi nota, apoi cuantumul bursei
         return lst;
     }
