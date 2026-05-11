@@ -1,12 +1,21 @@
 package ro.ulbs.proiectaresoftware.students;
 
-import java.io.IOException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
+import java.io.*;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Application {
@@ -155,6 +164,75 @@ public class Application {
     }
 
 
+    public static void exercitiuExcel(List<Student> studentList){
+        try{
+            OutputStream fileOut = new FileOutputStream("laboratoe8_students.xls");
+            Workbook wb = new XSSFWorkbook();
+            Sheet sheet = wb.createSheet("laboratoe8_students");
+            int i = 0;
+            for(Student student : studentList){
+                Row row = sheet.createRow(i++);
+                row.createCell(0).setCellValue(student.getNumarMatricol());
+                row.createCell(1).setCellValue(student.getPrenume());
+                row.createCell(2).setCellValue(student.getNume());
+                row.createCell(3).setCellValue(student.getFormatieDeStudiu());
+            }
+            wb.write(fileOut);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Student> exercitiuCitireExcel (String file){
+        try{
+            InputStream fileIn = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        XSSFWorkbook wb = null;
+        try{
+            wb = new XSSFWorkbook(file);
+        }
+        catch(IOException e){
+            throw new RuntimeException(e);
+        }
+
+        XSSFSheet sheet = wb.getSheetAt(0);
+        Iterator<Row> rowIterator = sheet.iterator();
+
+        List<Student> studentList = new ArrayList<>();
+        while(rowIterator.hasNext()){
+            int numarMatricol = 0;
+            String nume = null;
+            String prenume = null;
+            String formatie = null;
+
+            Row row = rowIterator.next();
+            Iterator<Cell> cellIterator = row.cellIterator();
+            while(cellIterator.hasNext()){
+                Cell cell = cellIterator.next();
+                switch(cell.getColumnIndex()){
+                    case 0:
+                        numarMatricol = (int) cell.getNumericCellValue();
+                        break;
+                    case 1:
+                        nume = cell.getStringCellValue();
+                        break;
+                    case 2:
+                        prenume = cell.getStringCellValue();
+                        break;
+                    case 3:
+                        formatie = cell.getStringCellValue();
+                        break;
+                }
+            }
+            Student s = new Student(numarMatricol, prenume, nume, formatie);
+            studentList.add(s);
+        }
+        return studentList;
+    }
+
     public static void main(String[] args) {
 
         Student s1 = new Student(112, "Ioan", "Popa", "TI21/1");
@@ -175,7 +253,7 @@ public class Application {
         studentList.forEach(student -> student.setNota(0d));
         //studentList.forEach(student -> System.out.println(student.toString()));
 
-        exercitiuImutabilitate(studentList);
+        //exercitiuImutabilitate(studentList);
     }
 }
 
