@@ -1,12 +1,12 @@
 package ro.ulbs.proiectaresoftware.students;
-
+/*
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+*/
 
 import java.io.*;
 import java.lang.reflect.Array;
@@ -163,7 +163,7 @@ public class Application {
         return new Student(s.getNumarMatricol(), s.getPrenume(), s.getNume(), formatieNoua);
     }
 
-
+    /*
     public static void exercitiuExcel(List<Student> studentList){
         try{
             OutputStream fileOut = new FileOutputStream("laboratoe8_students.xls");
@@ -232,6 +232,42 @@ public class Application {
         }
         return studentList;
     }
+    */
+
+    public static void exercitiuLambda(){
+        List<Student> studentiCuNote = Arrays.asList(
+                new Student(1025,"Andrei","Popa","ISM141/2", 8.70),
+                new Student(1024,"Ioan","Mihalcea","ISM141/1", 10.0),
+                new Student(1026,"Anamaria","Prodan","TI131/1", 8.90),
+                new Student(1029,"Bianca","Popescu","TI131/1,", 10.0),
+                new Student(1029,"Maria","Pana","TI131/2,", 4.10),
+                new Student(1029,"Gabriela","Mohanu","TI131/2,", 7.33),
+                new Student(1029,"Marius","Nasta","TI131/2,", 3.20),
+                new Student(1029,"Marius","Nasta","TI131/1,", 5.12),
+                new Student(1029,"Andrei","Dobrescu","TI131/2,", 2.22)
+        );
+
+        System.out.println("Studenti cu nota 10: ");
+        studentiCuNote.stream().filter(student ->
+                student.getNota().equals(10.0)).forEach(student -> System.out.println(student.toString())
+        );
+        System.out.println("Studenti cu nota >5: ");
+        studentiCuNote.stream().filter(student ->
+                student.getNota().compareTo(5d) == 1).forEach(student -> System.out.println(student.toString())
+        );
+
+        studentiCuNote.forEach(student -> {
+            if(student.getNota().compareTo(4d) == -1){
+                student.setNota(4d);
+            }
+        });
+
+        List<Double> listaNote = new ArrayList<>();
+        studentiCuNote.forEach(student -> listaNote.add(student.getNota()));
+        Optional<Double> sum = listaNote.stream().reduce((nota1, nota2) -> nota1 + nota2);
+        System.out.println("Suma notelor: " + sum.get());
+        System.out.println("Media: " + sum.get() / listaNote.size());
+    }
 
     public static void main(String[] args) {
 
@@ -250,10 +286,9 @@ public class Application {
         studentList.add(s4);
         studentList.add(s5);
         studentList.add(s6);
-        studentList.forEach(student -> student.setNota(0d));
-        //studentList.forEach(student -> System.out.println(student.toString()));
 
-        //exercitiuImutabilitate(studentList);
+        exercitiuLambda();
+
     }
 }
 

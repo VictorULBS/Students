@@ -10,11 +10,20 @@ public class Student {
     Double nota;
     static boolean headerPrinted = false;
 
-    public Student(int numarMatricol, String prenume, String nome, String formatieDeStudiu) {
+    public Student(int numarMatricol, String prenume, String nome, String formatieDeStudiu, Double nota) {
         this.numarMatricol = numarMatricol;
         this.prenume = prenume;
         this.nume = nome;
         this.formatieDeStudiu = formatieDeStudiu;
+        this.nota = nota;
+    }
+
+    public Student(int numarMatricol, String prenume, String nume, String formatieDeStudiu) {
+        this.numarMatricol = numarMatricol;
+        this.prenume = prenume;
+        this.nume = nume;
+        this.formatieDeStudiu = formatieDeStudiu;
+        Double nota = null;
     }
 
     public int getNumarMatricol() {
