@@ -1,0 +1,6 @@
+1024,Ioan,Mihalcea,ISM141/1
+1025,Andrei,Popa,ISM141/2
+1026,Bianca,Popescu,TI131/2
+1029,Anamaria,Prodan,TI131/1
+1027,Paul,Mohanu,TI132/1
+1028,Bob,Bobson,TI132/2

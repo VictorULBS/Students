@@ -248,25 +248,31 @@ public class Application {
         );
 
         System.out.println("Studenti cu nota 10: ");
-        studentiCuNote.stream().filter(student ->
-                student.getNota().equals(10.0)).forEach(student -> System.out.println(student.toString())
+        studentiCuNote.stream()
+                .filter(student -> student.getNota() == 10)
+                .forEach(student -> System.out.println(student.toString())
         );
         System.out.println("Studenti cu nota >5: ");
-        studentiCuNote.stream().filter(student ->
-                student.getNota().compareTo(5d) == 1).forEach(student -> System.out.println(student.toString())
+        studentiCuNote.stream()
+                .filter(student -> student.getNota() >= 5)
+                .forEach(student -> System.out.println(student.toString())
         );
+        System.out.println();
 
-        studentiCuNote.forEach(student -> {
-            if(student.getNota().compareTo(4d) == -1){
-                student.setNota(4d);
-            }
-        });
+        studentiCuNote.stream().map(
+                student -> {
+                    if(student.getNota() < 4d) student.setNota(4d);
+                    return student;
+                }
+        ).forEach(System.out::println);
 
-        List<Double> listaNote = new ArrayList<>();
-        studentiCuNote.forEach(student -> listaNote.add(student.getNota()));
-        Optional<Double> sum = listaNote.stream().reduce((nota1, nota2) -> nota1 + nota2);
+
+        Optional<Double> sum = studentiCuNote.stream()
+                .map(student -> student.getNota())
+                .reduce((nota1, nota2 ) -> nota1 + nota2);
+
         System.out.println("Suma notelor: " + sum.get());
-        System.out.println("Media: " + sum.get() / listaNote.size());
+        System.out.println("Media: " + sum.get() / studentiCuNote.size());
     }
 
     public static void main(String[] args) {
