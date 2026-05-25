@@ -1,4 +1,4 @@
-package ro.ulbs.proiectaresoftware.students;
+package ro.ulbs.proiectaresoftware.students.strategy;
 
 /*
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,10 +13,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+*/
+
+import ro.ulbs.proiectaresoftware.students.Student;
+import java.util.List;
 
 public class StudentiDinFisierXlsx implements StrategieInput {
+
     @Override
     public List<Student> inputStudenti() {
+        return null;
+        /*
         String file = "students.xlsx";
         try{
             InputStream fileIn = new FileInputStream(file);
@@ -64,6 +71,7 @@ public class StudentiDinFisierXlsx implements StrategieInput {
             studentList.add(s);
         }
         return studentList;
+        */
     }
+
 }
-*/
